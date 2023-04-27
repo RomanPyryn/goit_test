@@ -34,7 +34,7 @@ function Card({ onData }) {
     <>
       <UserCard>
 				<User src={avatar} alt="user" />
-        <Logo src="../../../public/img/logo.png" alt="logo" />
+        <Logo src="./img/logo.png" alt="logo" />
         <Picture src="./img/picture.png" alt="main_picture" />
         <Line></Line>
         <Info>
