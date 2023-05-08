@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as getUsersApi from "../../services/getUsers-api";
+import { addFollower } from "../../services/getUsers-api";
 import {
   UserCard,
   User,
@@ -14,21 +14,23 @@ import {
 
 function Card({ onData }) {
   const [followings, setFollowings] = useState(false);
-  const { id, avatar, tweets, followers } = onData;
+	const [user, setUser] = useState(onData);
+	const { id, avatar, tweets, followers } = user;
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem(`${id}`));
-    if (items) {
+		if (items) {
       setFollowings(items);
     }
-  }, [id]);
+	}, [id]);
 
   const handleClick = async () => {
     setFollowings(!followings);
     localStorage.setItem(`${id}`, JSON.stringify(!followings));
-    const editedValue = { followers: followers + 1 };
-    await getUsersApi.addFollower(editedValue, id);
-  };
+    const editedValue = followings ? { followers: followers - 1 } : { followers: followers + 1 };
+		const newUser = await addFollower(id, editedValue);
+		setUser(newUser);
+	};
 
   return (
     <>
@@ -39,7 +41,7 @@ function Card({ onData }) {
         <Line></Line>
         <Info>
           <Tweets>{tweets} tweets</Tweets>
-          <Followers>{followers} Followers</Followers>
+          <Followers>{String(followers).length > 3 ? String(followers).slice(0, -3) + "," + String(followers).slice(-3) : followers} Followers</Followers>
           <Button
             onClick={handleClick}
             className={followings ? "following" : ""}

@@ -12,8 +12,7 @@ export const getUserById = async (user_id) => {
   return response.data;
 };
 
-export const addFollower = async (user, user_id) => {
-  const response = await axios.patch(`${BASE_URL}${user_id}`, user);
-  // console.log(response)
-  return response.data;
+export const addFollower = async (user_id, user_data) => {
+	const { data } = await axios.put(`${BASE_URL}${user_id}`, user_data);
+	return data;
 };

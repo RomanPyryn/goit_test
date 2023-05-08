@@ -13,7 +13,7 @@ const Home = () => {
       try {
         const results = await getUsersApi.getUsers(cards);
         const items = results.data;
-        setUsers(items);
+				setUsers(items);
       } catch (error) {
         console.log(error);
       }
