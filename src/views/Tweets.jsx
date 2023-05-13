@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import * as getUsersApi from '../services/getUsers-api';
+import { BiArrowBack } from 'react-icons/bi';
 import UsersList from '../components/UsersList';
-import { Button, LoadMoreBtn } from './Tweets.styled';
+import { BackBtn, LoadMoreBtn } from './Tweets.styled';
 
 const Tweets = () => {
   const [users, setUsers] = useState([]);
@@ -26,7 +27,7 @@ const Tweets = () => {
   };
   return (
     <>
-      <Button to={`/`}>Back</Button>
+      <BackBtn to={`/`}><BiArrowBack className='back-arrow' />Back</BackBtn>
       {users.length > 0 && <UsersList onData={users} />}
       {users.length >= cards && (
         <LoadMoreBtn onClick={handleLoamoreClick}>Load more</LoadMoreBtn>

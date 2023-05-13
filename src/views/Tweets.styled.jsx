@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const Button = styled(Link)`
-  display: block;
+export const BackBtn = styled(Link)`
+  display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
   cursor: pointer;
   text-align: center;
-  padding-top: 15px;
+  /* padding-top: 15px; */
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;

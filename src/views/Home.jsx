@@ -1,3 +1,4 @@
+import { FaTwitter } from 'react-icons/fa';
 import { HomeHeader, HomeSubHeader, Button } from './Home.styled';
 
 const Home = () => {
@@ -5,7 +6,7 @@ const Home = () => {
     <>
       <HomeHeader>Roman Pyryn Test Work</HomeHeader>
       <HomeSubHeader>Social Network</HomeSubHeader>
-      <Button to={`tweets`}>tweets</Button>
+      <Button to={`tweets`}><FaTwitter/> tweets</Button>
     </>
   );
 };

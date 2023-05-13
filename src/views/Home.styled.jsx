@@ -17,10 +17,13 @@ export const HomeSubHeader = styled.h2`
 `;
 
 export const Button = styled(Link)`
-  display: block;
+  display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
   cursor: pointer;
   text-align: center;
-  padding-top: 15px;
+  /* padding-top: 15px; */
   margin-top: 75px;
   margin-left: auto;
   margin-right: auto;
