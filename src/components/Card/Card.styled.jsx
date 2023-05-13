@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const UserCard = styled.div`
   position: relative;
@@ -16,12 +16,27 @@ export const UserCard = styled.div`
   border-radius: 20px;
 `;
 
-export const User = styled.img`
-  position: absolute;
-  top: 180px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  z-index: 10;
+export const TopBox = styled.div`
+  position: relative;
+  width: 100%;
+  height: 222px;
+  background-image: url('/img/picture.png');
+  background-position: center center;
+  background-size: 308px 168px;
+  background-repeat: no-repeat;
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8px;
+    background-color: #ebd8ff;
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
+      inset 0px -1.71846px 3.43693px #ae7be3,
+      inset 0px 3.43693px 2.5777px #fbf8ff;
+  }
 `;
 
 export const Logo = styled.img`
@@ -30,26 +45,35 @@ export const Logo = styled.img`
   top: 20px;
 `;
 
-export const Picture = styled.img`
+export const UserBox = styled.div`
   position: absolute;
-  top: 28px;
-  left: 36px;
-`;
-
-export const Line = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 8px;
-  margin-top: 214px;
-  background: #ebd8ff;
+  bottom: -32px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 9;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
     inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
 `;
 
-export const Info = styled.div`
-  position: absolute;
-  bottom: 36px;
+export const User = styled.img`
+  position: relative;
+  width: 62px;
+  height: 62px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #4b2a99;
+`;
+
+export const InfoBox = styled.div`
   width: 100%;
+  height: 238px;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -59,6 +83,7 @@ export const Info = styled.div`
 `;
 
 export const Tweets = styled.p`
+  margin-top: 62px;
   margin-bottom: 16px;
 `;
 

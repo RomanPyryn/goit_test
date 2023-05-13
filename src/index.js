@@ -8,7 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
 		{/* <BrowserRouter> */}
-    <BrowserRouter basename="/goit_test/">
+		{/* "homepage": "https://RomanPyryn.github.io/social_network/", */}
+    <BrowserRouter basename="/social_network/">
       <App />
     </BrowserRouter>
   </React.StrictMode>

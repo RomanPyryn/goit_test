@@ -1,71 +1,36 @@
-import {
-  Button,
-  TweetsList,
-  TweetsItem,
-  TweetsHeader,
-  TweetsText,
-} from "./Tweets.styled";
+import { useState, useEffect } from 'react';
+import * as getUsersApi from '../services/getUsers-api';
+import UsersList from '../components/UsersList';
+import { Button, LoadMoreBtn } from './Tweets.styled';
 
 const Tweets = () => {
+  const [users, setUsers] = useState([]);
+  const limit = 9;
+  const [cards, setCards] = useState(limit);
+
+  useEffect(() => {
+    const fetchFunc = async cards => {
+      try {
+        const results = await getUsersApi.getUsers(cards);
+        const items = results.data;
+        setUsers(items);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFunc(cards);
+  }, [cards]);
+
+  const handleLoamoreClick = () => {
+    setCards(cards + limit);
+  };
   return (
     <>
       <Button to={`/`}>Back</Button>
-      <TweetsList>
-        <TweetsItem>
-          <TweetsHeader>Tweet 1</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-        <TweetsItem>
-          <TweetsHeader>Tweet 2</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-        <TweetsItem>
-          <TweetsHeader>Tweet 3</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-        <TweetsItem>
-          <TweetsHeader>Tweet 4</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-        <TweetsItem>
-          <TweetsHeader>Tweet 5</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-        <TweetsItem>
-          <TweetsHeader>Tweet 6</TweetsHeader>
-          <TweetsText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non
-            aliquid assumenda, placeat itaque rem porro eaque delectus harum
-            quos, adipisci expedita hic a incidunt? Ad deserunt impedit tenetur
-            veritatis?
-          </TweetsText>
-        </TweetsItem>
-      </TweetsList>
+      {users.length > 0 && <UsersList onData={users} />}
+      {users.length >= cards && (
+        <LoadMoreBtn onClick={handleLoamoreClick}>Load more</LoadMoreBtn>
+      )}
     </>
   );
 };
