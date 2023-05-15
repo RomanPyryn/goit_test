@@ -1,6 +1,6 @@
 SOCIAL NETWORK APP
 
-Create on React
+Created on React
 
 Using:
 
