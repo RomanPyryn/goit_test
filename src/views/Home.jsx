@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <HomeHeader>Roman Pyryn Test Work</HomeHeader>
-      <HomeSubHeader>Social Network</HomeSubHeader>
+      <HomeSubHeader>Social Network app</HomeSubHeader>
       <Button to={`tweets`}>
         <FaTwitter /> tweets
       </Button>
