@@ -1,8 +1,8 @@
 {
-  "name": "social_network",
+  "name": "social-network",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://RomanPyryn.github.io/social_network/",
+  "homepage": "https://RomanPyryn.github.io/social-network/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
