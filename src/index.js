@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <BrowserRouter> */}
-    <BrowserRouter basename="/social_network/">
+    <BrowserRouter basename="/social-network/">
       <App />
       <ToastContainer position="top-center" autoClose={3000} theme="dark" />
     </BrowserRouter>
