@@ -6,7 +6,9 @@ const Home = () => {
     <>
       <HomeHeader>Roman Pyryn Test Work</HomeHeader>
       <HomeSubHeader>Social Network</HomeSubHeader>
-      <Button to={`tweets`}><FaTwitter/> tweets</Button>
+      <Button to={`tweets`}>
+        <FaTwitter /> tweets
+      </Button>
     </>
   );
 };

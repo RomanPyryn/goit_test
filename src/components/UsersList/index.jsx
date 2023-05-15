@@ -1,11 +1,11 @@
-// import PropTypes from 'prop-types';
-import Card from "../Card";
-import { UserList, UserItem, UserName } from "./UsersList.styled";
+import PropTypes from 'prop-types';
+import Card from '../Card';
+import { UserList, UserItem, UserName } from './UsersList.styled';
 
 const UsersList = ({ onData }) => {
   return (
     <UserList>
-      {onData.map((item) => (
+      {onData.map(item => (
         <UserItem key={item.id}>
           <Card onData={item}></Card>
           <UserName>{item.user}</UserName>
@@ -15,10 +15,8 @@ const UsersList = ({ onData }) => {
   );
 };
 
-// UsersList.propTypes = {
-//   item: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//   }),
-// };
+UsersList.propTypes = {
+  onData: PropTypes.arrayOf(PropTypes.shape),
+};
 
 export default UsersList;

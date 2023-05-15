@@ -103,6 +103,12 @@ export const Button = styled.button`
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
   background-color: #ebd8ff;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    scale: 1.03;
+    opacity: 0.8;
+  }
   &.following {
     background-color: #5cd3a8;
   }

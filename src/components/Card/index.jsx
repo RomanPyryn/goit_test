@@ -1,10 +1,12 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { addFollower } from '../../services/getUsers-api';
 import {
   UserCard,
   TopBox,
-	Logo,
-	UserBox,
+  Logo,
+  UserBox,
   User,
   InfoBox,
   Tweets,
@@ -14,8 +16,8 @@ import {
 
 function Card({ onData }) {
   const [followings, setFollowings] = useState(false);
-  const [user, setUser] = useState(onData);
-  const { id, avatar, tweets, followers } = user;
+  const [item, setItem] = useState(onData);
+  const { id, user, avatar, tweets, followers } = item;
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem(`${id}`));
@@ -26,12 +28,15 @@ function Card({ onData }) {
 
   const handleClick = async () => {
     setFollowings(!followings);
+    followings
+      ? toast.info(`You are now unfollowed "${user}"!`)
+      : toast.success(`You are now following "${user}"!`);
     localStorage.setItem(`${id}`, JSON.stringify(!followings));
     const editedValue = followings
       ? { followers: followers - 1 }
       : { followers: followers + 1 };
-    const newUser = await addFollower(id, editedValue);
-    setUser(newUser);
+    const editedItem = await addFollower(id, editedValue);
+    setItem(editedItem);
   };
 
   return (
@@ -39,9 +44,9 @@ function Card({ onData }) {
       <UserCard>
         <TopBox>
           <Logo src="./img/logo.png" alt="logo" />
-					<UserBox>
-						<User src={avatar} alt="user" />
-					</UserBox>
+          <UserBox>
+            <User src={avatar} alt="user" />
+          </UserBox>
         </TopBox>
         <InfoBox>
           <Tweets>{tweets} tweets</Tweets>
@@ -64,5 +69,15 @@ function Card({ onData }) {
     </>
   );
 }
+
+Card.propTypes = {
+  onData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+  }),
+};
 
 export default Card;
