@@ -20,7 +20,7 @@ export const TopBox = styled.div`
   position: relative;
   width: 100%;
   height: 222px;
-  background-image: url('/img/picture.png');
+  background-image: url('./img/picture.png');
   background-position: center center;
   background-size: 308px 168px;
   background-repeat: no-repeat;
